@@ -1,3 +1,3 @@
 # goit-node-hw-01
 
-![contactsOperation](screenshots/home-work-01.png)
+![contactsOperation](screenshot/home-work-01.png)
