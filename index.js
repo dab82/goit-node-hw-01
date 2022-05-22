@@ -19,15 +19,12 @@ async function invokeAction({ action, id, name, email, phone }) {
 
 		case "add":
 			const newContact = await contactsOperation.addContact(name, email, phone);
-			console.log("This contact has been added to the database:", newContact);
+			console.log("This contact has been added to the db");
 			break;
 
 		case "remove":
 			const removeContact = await contactsOperation.removeContact(id);
-			console.log(
-				`The contact with this id - ${id}  has been deleted:`,
-				removeContact
-			);
+			console.log(`The contact with this id - ${id}  has been deleted`);
 			break;
 
 		default:
