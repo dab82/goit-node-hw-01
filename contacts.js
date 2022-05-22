@@ -20,23 +20,7 @@ async function getContactById(contactId) {
 		const contactById = allContacts.find(
 			(contact) => contact.id === `${contactId}`
 		);
-		return contactById;
-	} catch (error) {
-		console.error(error.massage);
-	}
-}
-
-async function removeContact(contactId) {
-	try {
-		const allContacts = await listContacts();
-		const idx = allContacts.findIndex(
-			(contact) => contact.id === `${contactId}`
-		);
-		const removeContactById = allContacts[idx];
-		if (idx !== -1) {
-			allContacts.splice(idx, 1);
-			await fs.writeFile(contactsPath, JSON.stringify(allContacts));
-		}
+		console.table(contactById);
 	} catch (error) {
 		console.error(error.massage);
 	}
@@ -53,6 +37,24 @@ async function addContact(name, email, phone) {
 		const allContacts = await listContacts();
 		allContacts.push(newContact);
 		await fs.writeFile(contactsPath, JSON.stringify(allContacts));
+		console.table(newContact);
+	} catch (error) {
+		console.error(error.massage);
+	}
+}
+
+async function removeContact(contactId) {
+	try {
+		const allContacts = await listContacts();
+		const idx = allContacts.findIndex(
+			(contact) => contact.id === `${contactId}`
+		);
+		const removeContactById = allContacts[idx];
+		if (idx !== -1) {
+			allContacts.splice(idx, 1);
+			await fs.writeFile(contactsPath, JSON.stringify(allContacts));
+		}
+		console.table(removeContactById);
 	} catch (error) {
 		console.error(error.massage);
 	}
