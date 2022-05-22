@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const path = require("path");
 const uuid = require("uuid");
 
-const contactsPath = path.join(__dirname, "db", "contacts.json");
+const contactsPath = path.join(__dirname, "./db/contacts.json");
 
 async function listContacts() {
 	try {
@@ -37,7 +37,6 @@ async function removeContact(contactId) {
 			allContacts.splice(idx, 1);
 			await fs.writeFile(contactsPath, JSON.stringify(allContacts));
 		}
-		return removeContactById;
 	} catch (error) {
 		console.error(error.massage);
 	}
@@ -54,7 +53,6 @@ async function addContact(name, email, phone) {
 		const allContacts = await listContacts();
 		allContacts.push(newContact);
 		await fs.writeFile(contactsPath, JSON.stringify(allContacts));
-		return newContact;
 	} catch (error) {
 		console.error(error.massage);
 	}
